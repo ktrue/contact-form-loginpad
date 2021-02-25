@@ -83,6 +83,33 @@ files to configure for each ***LL*** language on your site.
 
 The following entries should be made to *language-**LL**.txt*:
 
+```
+#
+# wxcontact.php entries
+#
+langlookup|Full Name:|Full Name:|
+langlookup|E-Mail Address:|E-Mail Address:|
+langlookup|Enter E-Mail Address again:|Enter E-Mail Address again:|
+langlookup|Subject:|Subject:|
+langlookup|Message:|Message:|
+langlookup|Thanks for taking the time to submit your feedback.|Thanks for taking the time to submit your feedback.|
+langlookup|Send|Send|
+langlookup|Reset|Reset|
+langlookup|Input Forbidden NL|Input Forbidden NL|
+langlookup|Input Forbidden|Input Forbidden|
+langlookup|A proper email address is required.|A proper email address is required.|
+langlookup|The email addresses are not the same.|The email addresses are not the same.|
+langlookup|Your name is required.|Your name is required.|
+langlookup|A subject is required.|A subject is required.|
+langlookup|Please complete the captcha before Send.|Please complete the captcha before Send.|
+langlookup|Please make any necessary corrections and try again.|Please make any necessary corrections and try again.|
+langlookup|Please enter your name and correct e-mail address here.|Please enter your name and correct e-mail address here.|
+langlookup|A few people mistype their e-mail addresses, making it impossible for us to respond.|A few people mistype their e-mail addresses, making it impossible for us to respond.|
+langlookup|Please double-check carefully.|Please double-check carefully.|
+langlookup|Please click the buttons on the keypad below to enter|Please click the buttons on the keypad below to enter|
+langlookup|Too many errors - reload page to retry.|Too many errors - reload page to retry.|
+```
+
 Right-click in the above textbox, Select ALL, right-click, Copy then
 paste to the end of *language-**LL**.txt* and change the third field
 (delimited by **|** ) with the language translation. Make sure the
