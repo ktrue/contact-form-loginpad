@@ -12,6 +12,7 @@ Version 2.00 - 07-Apr-2018 rewritten to use Google reCaptcha V2.0 - Ken True - S
 Version 2.01 - 09-Aug-2018 removed each() for PHP7 compatibility
 Version 3.00 - 14-Apr-2020 update to use hCaptcha instead of Google reCaptcha
 Version 4.00 - 24-Feb-2021 update to use LoginPad class instead for captcha
+Version 4.01 - 01-Mar-2021 conditional define for not_null() function/fix whos-online script fatal error
 
 You are free to use and modify the code
 PHP version 5.5 or greater is recommended
@@ -132,7 +133,7 @@ if(!function_exists('langtrans')) {
 		return;
 	}
 }
-print "<!-- contactLP-inc.php V4.00 - 23-Feb-2021 -->\n";
+print "<!-- contactLP-inc.php V4.01 - 01-Mar-2021 -->\n";
 
 $kp = new loginPad($kpChallenge,1,0); // Instansiation with the access code
 
@@ -391,18 +392,20 @@ if($message_sent) {
 ############################################################################
 # Support functions
 #
-function not_null($value) {
-	if (is_array($value)) {
-		if (sizeof($value) > 0) {
-			return true;
+if(!function_exists('not_null')) {
+	function not_null($value) {
+		if (is_array($value)) {
+			if (sizeof($value) > 0) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
-			return false;
-		}
-	} else {
-		if (($value != '') && (strtolower($value) != 'null') && (strlen(trim($value)) > 0)) {
-			return true;
-		} else {
-			return false;
+			if (($value != '') && (strtolower($value) != 'null') && (strlen(trim($value)) > 0)) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 	}
 }
