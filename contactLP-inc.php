@@ -13,6 +13,7 @@ Version 2.01 - 09-Aug-2018 removed each() for PHP7 compatibility
 Version 3.00 - 14-Apr-2020 update to use hCaptcha instead of Google reCaptcha
 Version 4.00 - 24-Feb-2021 update to use LoginPad class instead for captcha
 Version 4.01 - 01-Mar-2021 conditional define for not_null() function/fix whos-online script fatal error
+Version 4.02 - 13-Jan-2022 fixes for Notice errata and adjust CSS for better LoginPad display
 
 You are free to use and modify the code
 PHP version 5.5 or greater is recommended
@@ -63,10 +64,23 @@ if(!$doStandalone) {
   ############################################################################
 ?>
 <style type="text/css">
-.input p { font-family:arial; font-size:1em }
+.input p { font-family:Arial, Helvetica, sans-serif; font-size:1em }
 .input a { text-decoration:none }
-.input { width:140px; margin-left:50px; padding:10px; background-color:#B0FFB0; border:1px solid grey }
-.db { width:33px; height:33px }
+.input td {align-content: center !important; vertical-align: middle !important;}
+.input { width:140px !important; margin-left:50px; padding:5px; background-color:#B0FFB0; border:1px solid grey; -webkit-column-rule-width: 140px !important; }
+.db { 
+  font-family: "Courier New", Courier, monospace;
+  font-size: xx-large !important;
+  font-weight: bold !important;
+  text-align: center !important;
+  width:1em !important;
+  height:1.4em !important;
+  vertical-align: top !important;
+  padding-left: 6px !important;
+  padding-right: 10px !important;
+  padding-top: 0px !important;
+  padding-bottom: 5px !important; 
+}
 .db a:hover { color:red !important; }
 .challenge {
  font-size: x-large;
@@ -74,14 +88,17 @@ if(!$doStandalone) {
  border: 2px blue solid;
  padding: 10px;
 }
+input[type=button], input[type=submit], input[type=reset] {
+-webkit-appearance: none;
+-webkit-border-radius: 0;
+-webkit-padding: 0;
+-webkit-margin: 0;
+}
 .input input[type="button"] {
   border-radius: 10px !important;
-  font-size: x-large !important;
-  width: 33px !important;
-  height: 33px !important;
   border: 1px solid black !important;
   color: black !important;
-  margin: 1px;
+  margin: 1px !important;
 }
 .input input[type="button"]:hover {
   color: red !important;
@@ -133,7 +150,7 @@ if(!function_exists('langtrans')) {
 		return;
 	}
 }
-print "<!-- contactLP-inc.php V4.01 - 01-Mar-2021 -->\n";
+print "<!-- contactLP-inc.php V4.02 - 13-Jan-2022 -->\n";
 
 $kp = new loginPad($kpChallenge,1,0); // Instansiation with the access code
 
@@ -157,7 +174,7 @@ if(strlen($config_errors) > 0) {
 	print "</div>\n";
 }
 
-if ($SITE['lang'] <> 'en' and file_exists("wxcontact-".$SITE['lang'].'.html')) { 
+if (isset($SITE['lang']) and $SITE['lang'] <> 'en' and file_exists("wxcontact-".$SITE['lang'].'.html')) { 
 # handle included files for other language wxcontact-XX.html 
 	 include_once("wxcontact-".$SITE['lang'].'.html');
  } elseif (file_exists("wxcontact-en.html") ) {

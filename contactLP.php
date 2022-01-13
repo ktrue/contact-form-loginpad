@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<!-- standalone contact.php V4.00 - 24-Feb-2021 -->
+<!-- standalone contactLP.php V4.02 - 13-Jan-2022 -->
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Contact</title>
 <style type="text/css">
@@ -68,10 +68,23 @@ p {
   border: 1px dashed rgb(255,255,255);
 }
 
-.input p { font-family:arial; font-size:1em }
+.input p { font-family:Arial, Helvetica, sans-serif; font-size:1em }
 .input a { text-decoration:none }
-.input { width:140px; margin-left:50px; padding:10px; background-color:#B0FFB0; border:1px solid grey }
-.db { width:33px; height:33px }
+.input td {align-content: center !important; vertical-align: middle !important;}
+.input { width:140px !important; margin-left:50px; padding:5px; background-color:#B0FFB0; border:1px solid grey; -webkit-column-rule-width: 140px !important; }
+.db { 
+  font-family: "Courier New", Courier, monospace;
+  font-size: xx-large !important;
+  font-weight: bold !important;
+  text-align: center !important;
+  width:1em !important;
+  height:1.4em !important;
+  vertical-align: top !important;
+  padding-left: 6px !important;
+  padding-right: 10px !important;
+  padding-top: 0px !important;
+  padding-bottom: 5px !important; 
+}
 .db a:hover { color:red !important; }
 .challenge {
  font-size: x-large;
@@ -79,14 +92,17 @@ p {
  border: 2px blue solid;
  padding: 10px;
 }
+input[type=button], input[type=submit], input[type=reset] {
+-webkit-appearance: none;
+-webkit-border-radius: 0;
+-webkit-padding: 0;
+-webkit-margin: 0;
+}
 .input input[type="button"] {
   border-radius: 10px !important;
-  font-size: x-large !important;
-  width: 33px !important;
-  height: 33px !important;
   border: 1px solid black !important;
   color: black !important;
-  margin: 1px;
+  margin: 1px !important;
 }
 .input input[type="button"]:hover {
   color: red !important;
