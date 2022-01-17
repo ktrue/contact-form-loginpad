@@ -14,6 +14,7 @@ Version 3.00 - 14-Apr-2020 update to use hCaptcha instead of Google reCaptcha
 Version 4.00 - 24-Feb-2021 update to use LoginPad class instead for captcha
 Version 4.01 - 01-Mar-2021 conditional define for not_null() function/fix whos-online script fatal error
 Version 4.02 - 13-Jan-2022 fixes for Notice errata and adjust CSS for better LoginPad display
+Version 4.03 - 17-Jan-2022 fixes for better email address validation
 
 You are free to use and modify the code
 PHP version 5.5 or greater is recommended
@@ -150,7 +151,7 @@ if(!function_exists('langtrans')) {
 		return;
 	}
 }
-print "<!-- contactLP-inc.php V4.02 - 13-Jan-2022 -->\n";
+print "<!-- contactLP-inc.php V4.03 - 17-Jan-2022 -->\n";
 
 $kp = new loginPad($kpChallenge,1,0); // Instansiation with the access code
 
@@ -504,7 +505,7 @@ function name_case($EMname) {
 }
 function validate_email($EMaddress) {
    // Create the syntactical validation regular expression
-   $regexp = "^([_a-z0-9-]+)(\.[_a-z0-9-]+)*@([a-z0-9-]+)(\.[a-z0-9-]+)*(\.[a-z]{2,4})$";
+   $regexp ='^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$';
    // Presume that the email is invalid
    $valid = 0;
    //check for all the non-printable codes in the standard ASCII set,
@@ -513,12 +514,12 @@ function validate_email($EMaddress) {
     return 0;
    }
    // Validate the syntax
-   if (preg_match('|'.$regexp.'|i', $EMaddress)) {
+   if (preg_match('|'.$regexp.'|Uis', $EMaddress)) {
       list($username,$domaintld) = explode("@",$EMaddress);
       // Validate the domain
-      if (getmxrr($domaintld,$mxrecords)) {
+      #if (getmxrr($domaintld,$mxrecords)) { # removed V4.03 - not advised to use MX for validation
          $valid = 1;
-      }
+      #}
    } else {
       $valid = 0;
    }
