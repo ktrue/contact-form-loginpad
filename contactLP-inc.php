@@ -15,6 +15,7 @@ Version 4.00 - 24-Feb-2021 update to use LoginPad class instead for captcha
 Version 4.01 - 01-Mar-2021 conditional define for not_null() function/fix whos-online script fatal error
 Version 4.02 - 13-Jan-2022 fixes for Notice errata and adjust CSS for better LoginPad display
 Version 4.03 - 17-Jan-2022 fixes for better email address validation
+Version 4.04 - 01-Jun-2024 fix for Warning error 
 
 You are free to use and modify the code
 PHP version 5.5 or greater is recommended
@@ -481,7 +482,7 @@ function decode_specialchars($string){
 # $EMname = name_case($EMname);
 function name_case($EMname) {
  $break = 0;
- $newname = strtoupper($EMname[0]);
+ $newname = strtoupper(substr($EMname,0,1));
  for ($i=1; $i < strlen($EMname); $i++) {
 	 $subed = substr($EMname, $i, 1);
 	 if (((ord($subed) > 64) && (ord($subed) < 123)) ||
